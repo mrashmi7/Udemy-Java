@@ -16,7 +16,11 @@ public class MobilePhone {
     }
 
     public void modifyContact(String searchValue, String newName, String newNumber) {
-        contactList.get(findContactIndex(searchValue)).;
+        int contact =  findContactIndex(searchValue);
+        if (contact >= 0) {
+            contactList.get(contact).setName(newName);
+            contactList.get(contact).setPhoneNumber(newNumber);
+        }
         System.out.println();
     }
 
