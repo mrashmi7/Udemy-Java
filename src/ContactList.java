@@ -6,8 +6,11 @@ import java.util.ArrayList;
 public class ContactList extends ArrayList<Contact> {
 
     @Override
-    public int indexOf(Object o) {
-        System.out.println(o);
-        return super.indexOf(o);
+    public int indexOf(Object searchValue) {
+        for (int i = 0; i < this.size() ; i++)
+            if (searchValue.equals(this.get(i).getName()) ||  searchValue.equals(this.get(i).getPhoneNumber()))
+                return i;
+        return -1;
     }
+
 }

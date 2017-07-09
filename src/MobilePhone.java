@@ -15,17 +15,12 @@ public class MobilePhone {
         contactList.forEach((contact) -> System.out.printf("Contact: %s, %s\n", contact.getName(), contact.getPhoneNumber()));
     }
 
-    public void modifyContact(String searchQuery, String newName, String newNumber) {
-        findContactIndex(searchQuery);
-        System.out.println(searchQuery);
-        System.out.println(newName);
-        System.out.println(newNumber);
+    public void modifyContact(String searchValue, String newName, String newNumber) {
+        contactList.get(findContactIndex(searchValue)).;
         System.out.println();
-        System.out.println(contactList.indexOf(searchQuery));
     }
 
-    private int findContactIndex(String searchQuery) {
-        contactList.indexOf(searchQuery);
-        return 1;
+    private int findContactIndex(String searchValue) {
+        return contactList.indexOf(searchValue);
     }
 }

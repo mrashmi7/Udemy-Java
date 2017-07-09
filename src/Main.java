@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         MobilePhone newMobba = new MobilePhone();
         newMobba.printContacts();
+        newMobba.addContact("Diego", "06-1231");
         newMobba.modifyContact("Diego", "Staphorst", "06-1231");
     }
 }
