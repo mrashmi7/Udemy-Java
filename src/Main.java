@@ -10,5 +10,8 @@ public class Main {
         newMobba.printContacts();
         newMobba.modifyContact("Diego", "Staphorst", "06-1231");
         newMobba.printContacts();
+        newMobba.deleteContact("Staphorst");
+        newMobba.printContacts();
+
     }
 }

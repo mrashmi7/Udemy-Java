@@ -15,13 +15,19 @@ public class MobilePhone {
         contactList.forEach((contact) -> System.out.printf("Contact: %s, %s\n", contact.getName(), contact.getPhoneNumber()));
     }
 
+    public void deleteContact(String searchValue) {
+        int contact =  findContactIndex(searchValue);
+        if (contact >= 0) {
+            contactList.remove(contact);
+        }
+    }
+
     public void modifyContact(String searchValue, String newName, String newNumber) {
         int contact =  findContactIndex(searchValue);
         if (contact >= 0) {
             contactList.get(contact).setName(newName);
             contactList.get(contact).setPhoneNumber(newNumber);
         }
-        System.out.println();
     }
 
     private int findContactIndex(String searchValue) {
