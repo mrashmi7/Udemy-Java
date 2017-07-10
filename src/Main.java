@@ -18,6 +18,7 @@ public class Main {
         newMobba.printContacts();
         newMobba.deleteContact("Staphorst1");
         newMobba.printContacts();
+        newMobba.openContactsMenu();
 
     }
 }
