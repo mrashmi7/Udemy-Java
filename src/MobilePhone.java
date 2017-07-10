@@ -7,7 +7,16 @@ public class MobilePhone {
     private ContactList contactList = new ContactList();
 
     public void addContact(String name, String phoneNumber) {
-        contactList.add(new Contact(name, phoneNumber));
+        if (!isDuplicated(name, phoneNumber))
+            contactList.add(new Contact(name, phoneNumber));
+    }
+
+    private boolean isDuplicated(String name, String phoneNumber) {
+        if (contactList.indexOf(name) >= 0 || contactList.indexOf(phoneNumber) >= 0) {
+            System.out.println("This name or phonenumber is already in the contactlist!");
+            return true;
+        }
+        return false;
     }
 
     public void printContacts() {
@@ -16,21 +25,17 @@ public class MobilePhone {
     }
 
     public void deleteContact(String searchValue) {
-        int contact =  findContactIndex(searchValue);
-        if (contact >= 0) {
+        int contact =  contactList.indexOf(searchValue);
+        if (contact >= 0)
             contactList.remove(contact);
-        }
     }
 
     public void modifyContact(String searchValue, String newName, String newNumber) {
-        int contact =  findContactIndex(searchValue);
+        int contact =  contactList.indexOf(searchValue);
         if (contact >= 0) {
             contactList.get(contact).setName(newName);
             contactList.get(contact).setPhoneNumber(newNumber);
         }
     }
 
-    private int findContactIndex(String searchValue) {
-        return contactList.indexOf(searchValue);
-    }
 }
