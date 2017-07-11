@@ -1,3 +1,5 @@
+package MobilePhone;
+
 import java.util.Scanner;
 
 /**
@@ -9,9 +11,8 @@ public class MobilePhone {
 
     public void openContactsMenu() {
         boolean opened = true;
-        printOptions();
         while (opened) {
-            System.out.println();
+            printOptions();
             switch (getMenuOption()) {
                 case 1: // Show contacts
                     System.out.printf("Current amount of contacts in your mobile is %d\n", contactList.size());
@@ -29,11 +30,7 @@ public class MobilePhone {
                     System.out.println("Delete existing contact: ");
                     deleteContact();
                     break;
-                case 5: // Print options
-                    System.out.println("ContactList options:");
-                    printOptions();
-                    break;
-                case 6: // Close contactlist
+                case 5: // Close contactlist
                     opened = false;
                     break;
             }
@@ -47,14 +44,13 @@ public class MobilePhone {
         System.out.println("|   2 - Add contact         |");
         System.out.println("|   3 - Modify contact      |");
         System.out.println("|   4 - Delete contact      |");
-        System.out.println("|   5 - Show options        |");
-        System.out.println("|   6 - Close ContactList   |");
+        System.out.println("|   5 - Close ContactList   |");
         System.out.println("|___________________________|");
 
     }
 
     private int getMenuOption() {
-        System.out.print("Select your option [1-6]: ");
+        System.out.print("Select your option [1-5]: ");
         return (scanner.nextInt());
     }
 
@@ -82,7 +78,7 @@ public class MobilePhone {
     private void modifyContact() {
         int contact = contactList.indexOf(getSearchInput("Give contact name: "));
         String newName = getSearchInput("Give new Contact name: ");
-        String newNumber = getSearchInput("Give new Contact phonenumber: ");
+        String newNumber = getSearchInput("Give newContact phonenumber: ");
         if (contact >= 0) {
             contactList.get(contact).setName(newName);
             contactList.get(contact).setPhoneNumber(newNumber);
