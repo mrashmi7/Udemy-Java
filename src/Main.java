@@ -6,8 +6,8 @@ public class Main {
 //        MobilePhone newMobba = new MobilePhone();
 //        newMobba.openContactsMenu();
 
-        Bank bank = new Bank();
-        bank.bankingOptions();
+//        Bank bank = new Bank();
+//        bank.bankingOptions();
 
     }
 }
