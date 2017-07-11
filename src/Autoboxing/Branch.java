@@ -14,6 +14,10 @@ public class Branch {
         this.customerList = new ArrayList<Customer>();
     }
 
+    public void addNewCustomer(String name, double initialTransaction) {
+        this.customerList.add(new Customer(name, initialTransaction));
+    }
+
     public void setName(String name) {
         this.name = name;
     }

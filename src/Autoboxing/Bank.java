@@ -1,6 +1,7 @@
 package Autoboxing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -30,6 +31,7 @@ public class Bank {
                     break;
                 case 3: // Add transaction to customer
                     System.out.println("Add transaction for customer in branch");
+                    addNewTransactionToCustomer();
                     break;
                 case 4: // Show customer transactions
                     System.out.println("Show all available branches:\n");
@@ -37,6 +39,7 @@ public class Bank {
                     break;
                 case 5: // Show customer transactions
                     System.out.println("Show customer & his/her transactions in branch");
+                    printCustomersInBranch();
                     break;
                 case 6: // Close contactlist
                     opened = false;
@@ -45,22 +48,42 @@ public class Bank {
         }
     }
 
+    private void addNewTransactionToCustomer() {
+        for (Customer customer :findBranch(getInput("Give the branch name: ")).getCustomerList()) {
+            if (customer.getName().equals(getInput("Give the customer name: "))) {
+                customer.addTransaction(getTransactionInput());
+            }
+        };
+    }
+
+    private void printCustomersInBranch() {
+        for (Customer customer :findBranch(getInput("Give the branch name: ")).getCustomerList()) {
+            System.out.printf("Customer %s made these transactions: %s\n", customer.getName(), Arrays.toString(customer.getTransactions().toArray()));
+        };
+    }
+
     private void printAvailableBranches() {
         branches.forEach((branch) -> System.out.printf("Branch: %s.\n", branch.getName()));
     }
 
     private void addNewCustomerToBranch() {
-        Branch branchName = findBranch(getInput("Give the branch name: "));
+        createNewCustomer(findBranch(getInput("Give the branch name: ")));
     }
 
     private Branch findBranch(String branchName) {
-        this.branches.forEach((Branch branch) -> {
-            System.out.println(branch.getName());
-            System.out.println(branchName);
-            if (branch.getName() == branchName) System.out.println(branch);
-        });
-        return new Branch("hey");
+        for (Branch branch: this.branches) {
+            if (branch.getName().equals(branchName)) {
+                return branch;
+            }
+        }
+        return null;
     }
+
+    private void createNewCustomer(Branch branch) {
+        branch.addNewCustomer(getInput("Give the customer name: "), getTransactionInput());
+    }
+
+
 
     private void createNewBranch() {
         this.branches.add(new Branch(getInput("Give the new branch name: ")));
