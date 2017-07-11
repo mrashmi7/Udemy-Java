@@ -21,4 +21,12 @@ public class Branch {
     public void setCustomerList(ArrayList<Customer> customerList) {
         this.customerList = customerList;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
 }

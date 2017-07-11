@@ -15,7 +15,7 @@ public class Bank {
         this.scanner = new Scanner(System.in);
     }
 
-    public void openContactsMenu() {
+    public void bankingOptions() {
         boolean opened = true;
         while (opened) {
             printOptions();
@@ -26,12 +26,14 @@ public class Bank {
                     break;
                 case 2: // Add customer to branch
                     System.out.println("Add customer to branch");
+                    addNewCustomerToBranch();
                     break;
                 case 3: // Add transaction to customer
                     System.out.println("Add transaction for customer in branch");
                     break;
                 case 4: // Show customer transactions
-                    System.out.println("Show all available branches");
+                    System.out.println("Show all available branches:\n");
+                    printAvailableBranches();
                     break;
                 case 5: // Show customer transactions
                     System.out.println("Show customer & his/her transactions in branch");
@@ -41,6 +43,23 @@ public class Bank {
                     break;
             }
         }
+    }
+
+    private void printAvailableBranches() {
+        branches.forEach((branch) -> System.out.printf("Branch: %s.\n", branch.getName()));
+    }
+
+    private void addNewCustomerToBranch() {
+        Branch branchName = findBranch(getInput("Give the branch name: "));
+    }
+
+    private Branch findBranch(String branchName) {
+        this.branches.forEach((Branch branch) -> {
+            System.out.println(branch.getName());
+            System.out.println(branchName);
+            if (branch.getName() == branchName) System.out.println(branch);
+        });
+        return new Branch("hey");
     }
 
     private void createNewBranch() {
@@ -64,14 +83,15 @@ public class Bank {
         System.out.println("|   1 - Create branch       |");
         System.out.println("|   2 - Add customer        |");
         System.out.println("|   3 - Add transaction     |");
-        System.out.println("|   4 - Show customer       |");
-        System.out.println("|   5 - Close contactlist   |");
+        System.out.println("|   4 - Show branches       |");
+        System.out.println("|   5 - Show Customer       |");
+        System.out.println("|   6 - Close contactlist   |");
         System.out.println("|___________________________|");
         System.out.println();
     }
 
     private int getMenuOption() {
-        System.out.print("Select your option [1-5]: ");
+        System.out.print("Select your option [1-6]: ");
         return (scanner.nextInt());
     }
 }
