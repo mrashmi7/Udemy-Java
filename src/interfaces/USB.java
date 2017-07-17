@@ -16,6 +16,6 @@ public class USB extends ArrayList implements Storage {
 
     @Override
     public List getValuesInMemory() {
-        return null;
+        return this;
     }
 }
