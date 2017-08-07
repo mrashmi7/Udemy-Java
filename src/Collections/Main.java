@@ -1,22 +1,78 @@
 package Collections;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by diego on 05/08/2017.
  */
 public class Main {
     public static void main(String[] args) {
-        Theatre theatre = new Theatre("Olympain", 27, 12);
+        Theatre theatre = new Theatre("Olympain", 26, 12);
 
-        if (theatre.researveSeat("Z01")) {
-            System.out.println("hey gereserveerd");
+        if (theatre.researveSeat("D12")) {
+            System.out.println("Please pay for D12");
         } else {
-            System.out.println("neee");
+            System.out.println("Seat already reserved");
         }
 
-        if (theatre.researveSeat("Z01")) {
-            System.out.println("hey gereserveerd");
+        if (theatre.researveSeat("D12")) {
+            System.out.println("Please pay for D12");
         } else {
-            System.out.println("neee");
+            System.out.println("Seat already reserved");
         }
+
+        if (theatre.researveSeat("B13")) {
+            System.out.println("Please pay for B13");
+        } else {
+            System.out.println("Seat already reserved");
+        }
+
+        List<Theatre.Seat> reverseSeats = new ArrayList<>(theatre.getSeats());
+        Collections.reverse(reverseSeats);
+//        printList(reverseSeats);
+
+
+        List<Theatre.Seat> priceSeats = new ArrayList<>(theatre.getSeats());
+        priceSeats.add(theatre.new Seat("B00", 13.00));
+        priceSeats.add(theatre.new Seat("B00", 13.00));
+        Collections.sort(priceSeats, Theatre.PRICE_ORDER);
+        printList(priceSeats);
     }
+
+    public static void printList(List<Theatre.Seat> list) {
+        for (Theatre.Seat seat : list) {
+            System.out.printf(" %s %.2f",seat.getSeatNumber(), seat.getPrice());
+        }
+        System.out.println();
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
